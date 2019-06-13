@@ -91,11 +91,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         }
 
-    if (!(window.location.pathname === "/home_s/explore_events")) {
-        let upBar = document.getElementsByClassName("upBar2");
-        for (let i = 0; i < upBar.length; i++) {
-            upBar[i].style.display = "none";
+        if (!(window.location.pathname === "/home_s/explore_events") && !(window.location.pathname === "/home_s/explore_events/hosted_events")) {
+            let upBar = document.getElementsByClassName("upBar2");
+            for (let i = 0; i < upBar.length; i++) {
+                upBar[i].style.display = "none";
+            }
         }
-    }
     }
 );

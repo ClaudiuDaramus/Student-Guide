@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_05_28_103233) do
 
-  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "username", limit: 25, null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_103233) do
     t.index ["username"], name: "index_admins_on_username", unique: true
   end
 
-  create_table "announcements", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "announcements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
     t.date "valability", null: false
     t.boolean "visible_to_teachers", null: false
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2019_05_28_103233) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "announcements_groups", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "announcements_groups", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "announcement_id"
     t.integer "group_id"
     t.index ["announcement_id", "group_id"], name: "index_announcements_groups_on_announcement_id_and_group_id"
   end
 
-  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "room", default: "TBA", null: false
     t.string "teacher_first_name"
@@ -52,20 +52,20 @@ ActiveRecord::Schema.define(version: 2019_05_28_103233) do
     t.index ["teacher_first_name", "teacher_last_name"], name: "index_courses_on_teacher_first_name_and_teacher_last_name"
   end
 
-  create_table "courses_groups", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "courses_groups", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "course_id"
     t.integer "group_id"
     t.index ["course_id", "group_id"], name: "index_courses_groups_on_course_id_and_group_id"
   end
 
-  create_table "event_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "event_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["token"], name: "index_event_tokens_on_token", unique: true
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.date "date", null: false
     t.string "location", null: false
@@ -79,19 +79,19 @@ ActiveRecord::Schema.define(version: 2019_05_28_103233) do
     t.index ["name"], name: "index_events_on_name"
   end
 
-  create_table "events_students", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "events_students", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
     t.integer "student_id"
     t.index ["event_id", "student_id"], name: "index_events_students_on_event_id_and_student_id"
   end
 
-  create_table "events_teachers", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "events_teachers", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
     t.integer "teacher_id"
     t.index ["event_id", "teacher_id"], name: "index_events_teachers_on_event_id_and_teacher_id"
   end
 
-  create_table "groups", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "groups", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "group_no", null: false
     t.string "major", null: false
     t.datetime "created_at", null: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_103233) do
     t.index ["group_no"], name: "index_groups_on_group_no", unique: true
   end
 
-  create_table "optionals", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "optionals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "room", default: "TBA", null: false
     t.string "teacher_first_name"
@@ -116,13 +116,13 @@ ActiveRecord::Schema.define(version: 2019_05_28_103233) do
     t.index ["teacher_first_name", "teacher_last_name"], name: "index_optionals_on_teacher_first_name_and_teacher_last_name"
   end
 
-  create_table "optionals_students", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "optionals_students", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "optional_id"
     t.integer "student_id"
     t.index ["optional_id", "student_id"], name: "index_optionals_students_on_optional_id_and_student_id"
   end
 
-  create_table "student_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "student_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "token", null: false
     t.integer "group_no", null: false
     t.datetime "created_at", null: false
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_103233) do
     t.index ["token"], name: "index_student_tokens_on_token", unique: true
   end
 
-  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", limit: 50, null: false
     t.string "last_name", limit: 50, null: false
     t.string "email", limit: 100, null: false
@@ -144,14 +144,14 @@ ActiveRecord::Schema.define(version: 2019_05_28_103233) do
     t.index ["username"], name: "index_students_on_username", unique: true
   end
 
-  create_table "teacher_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "teacher_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["token"], name: "index_teacher_tokens_on_token", unique: true
   end
 
-  create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", limit: 50, null: false
     t.string "last_name", limit: 50, null: false
     t.string "email", limit: 100, null: false
