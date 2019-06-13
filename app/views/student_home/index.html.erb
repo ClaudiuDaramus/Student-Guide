@@ -16,12 +16,12 @@
       <% else %>
       <ul>
         <% Student.find(current_user.id).events.each do |event|%>
-        <li>
+        <li class = "hosted-event">
           <div class = 'time'>
-            <h3> <%= event.date.strftime('%d %B') %> <h3>
+            <h4> <%= event.date.strftime('%d %B') %> <h3>
             </div>
             <div class = 'details'>
-              <h3> <%=event.name%> </h3>
+              <h4> <%=event.name%> </h3>
               <p> <%= event.description%> </p>
               <span> Location: <%= event.location %>
             </div>

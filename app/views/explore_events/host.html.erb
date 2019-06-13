@@ -1,28 +1,24 @@
 <% @page_title = "Events" %>
 
-<%= link_to "Explore", student_explore_events_path, :class => "link" %>
-<%= link_to "Hosting", student_host_events_path, :class => "link" %>
-
-
 <div class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <h2>Hosted events</h2>
-    </br>
+    <br>
     <div class = 'events'>
       <% if Event.find_by(student_id: current_user.id) == nil %>
       <p> You aren't hosting any events </p>
       <% else %>
       <ul>
         <% Event.where(student_id: current_user.id).each do |event|%>
-        <li>
+        <li class = "hosted-event">
           <div class = 'time'>
-            <h3> <%= event.date.strftime('%d %B') %> <h3>
+            <h4> <%= event.date.strftime('%d %B') %> <h3>
             </div>
             <div class = 'details'>
-              <h3> <%=event.name%> </h3>
+              <h4> <%=event.name%> </h3>
               <p> <%= event.description%> </p>
               <span> Location: <%= event.location %>
-              <%= button_to "Join", {controller: 'explore_events', action: 'join_event', event: event.id}, method: :post, local: true, class: 'join' %>
+              <%= button_to "Join", {controller: 'explore_events', action: 'join_event', event: event.id}, method: :post, local: true, class: 'btn btn-primary join' %>
             </div>
 
         </li>
@@ -64,7 +60,7 @@
       <td><%= f.text_area :description, :required => true%></td>
     </tr>
     <tr>
-      <td><%= f.submit "Create", class: "create" %></td>
+      <td><%= f.submit "Create", class: "btn btn-primary create" %></td>
     </tr>
   </table>
   <% end %>
